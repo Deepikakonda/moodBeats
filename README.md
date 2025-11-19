@@ -81,6 +81,9 @@ Response:
 
 If Spotify credentials are missing or the API call fails, the route falls back to a curated static playlist and sets a descriptive warning message.
 
+<img width="1862" height="900" alt="image" src="https://github.com/user-attachments/assets/9b5fb808-c739-4ab1-b7d2-cb2ea1f2c474" />
+
+
 ## Notes
 
 - TextBlob is downloaded at install time; no extra corpora downloads are necessary.
