@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>MoodBeats · Spotify mood playlist generator</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="./styles.css" />
+  </head>
+  <body>
+    <div class="app-shell">
+      <header class="hero">
+        <div>
+          <p class="eyebrow">MoodBeats</p>
+          <h1>Let your feelings curate the soundtrack.</h1>
+          <p class="hero__copy">
+            Journal a sentence or two about your current vibe and MoodBeats will
+            analyze the sentiment, map it to compatible Spotify genres, and feed
+            you a playlist with instant previews.
+          </p>
+        </div>
+        <div class="hero__card">
+          <p class="hero__hint">Powered by TextBlob + Spotify Web API</p>
+          <p class="hero__cta">Write how you feel. We’ll do the rest.</p>
+        </div>
+      </header>
+
+      <main class="layout">
+        <section class="panel">
+          <form id="mood-form" class="journal-form">
+            <label for="mood-text">How are you feeling right now?</label>
+            <textarea
+              id="mood-text"
+              name="mood-text"
+              rows="5"
+              placeholder="Example: Feeling optimistic after landing the big pitch, ready to celebrate all night."
+              required
+            ></textarea>
+            <div class="form__actions">
+              <button type="submit" class="btn">
+                Generate playlist
+              </button>
+              <p class="form__hint">
+                We never store your journal entry — it’s processed in-memory and
+                sent straight to Spotify.
+              </p>
+            </div>
+          </form>
+
+          <div class="mood-card" id="mood-card" hidden>
+            <p class="mood-card__label">Mood detected</p>
+            <p class="mood-card__value" data-mood-label>—</p>
+            <dl class="mood-card__metrics">
+              <div>
+                <dt>Polarity</dt>
+                <dd data-mood-polarity>—</dd>
+              </div>
+              <div>
+                <dt>Subjectivity</dt>
+                <dd data-mood-subjectivity>—</dd>
+              </div>
+            </dl>
+          </div>
+        </section>
+
+        <section class="panel">
+          <div class="playlist-header">
+            <div>
+              <p class="eyebrow">Your soundtrack</p>
+              <h2>Playlist recommendations</h2>
+              <p class="playlist-header__hint" id="playlist-hint">
+                Submit your entry to see fresh tracks.
+              </p>
+            </div>
+            <button class="btn btn--ghost" id="refresh-btn" type="button" hidden>
+              Refresh playlist
+            </button>
+          </div>
+
+          <div id="playlist" class="playlist-grid" role="list"></div>
+        </section>
+      </main>
+    </div>
+
+    <template id="track-template">
+      <article class="track-card" role="listitem">
+        <img src="" alt="" class="track-card__art" />
+        <div class="track-card__body">
+          <p class="track-card__title"></p>
+          <p class="track-card__artists"></p>
+          <p class="track-card__album"></p>
+          <div class="track-card__actions"></div>
+        </div>
+      </article>
+    </template>
+
+    <script src="./app.js" type="module"></script>
+  </body>
+</html>
